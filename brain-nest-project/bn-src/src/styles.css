@@ -1,0 +1,83 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --font-sans: "Manrope", sans-serif;
+  --font-display: "Sora", sans-serif;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-highlight: var(--highlight);
+  --color-highlight-foreground: var(--highlight-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-surface-elevated: var(--surface-elevated);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --radius-sm: calc(var(--radius) - 3px);
+  --radius-md: var(--radius);
+  --radius-lg: calc(var(--radius) + 2px);
+  --shadow-panel: 0 18px 50px color-mix(in oklab, var(--shadow-color) 30%, transparent);
+  --shadow-glow: 0 0 34px color-mix(in oklab, var(--primary) 24%, transparent);
+}
+
+:root {
+  --radius: 0.45rem;
+  --background: oklch(0.115 0.028 274);
+  --foreground: oklch(0.97 0.012 278);
+  --card: oklch(0.165 0.038 281);
+  --card-foreground: oklch(0.97 0.012 278);
+  --popover: oklch(0.15 0.034 278);
+  --popover-foreground: oklch(0.97 0.012 278);
+  --primary: oklch(0.79 0.155 195);
+  --primary-foreground: oklch(0.12 0.03 270);
+  --secondary: oklch(0.205 0.04 280);
+  --secondary-foreground: oklch(0.94 0.014 277);
+  --muted: oklch(0.2 0.03 280);
+  --muted-foreground: oklch(0.72 0.035 277);
+  --accent: oklch(0.245 0.07 296);
+  --accent-foreground: oklch(0.97 0.012 278);
+  --highlight: oklch(0.72 0.22 331);
+  --highlight-foreground: oklch(0.98 0.01 330);
+  --border: oklch(0.3 0.055 281);
+  --input: oklch(0.24 0.045 281);
+  --ring: oklch(0.79 0.155 195);
+  --surface-elevated: oklch(0.14 0.035 277);
+  --success: oklch(0.76 0.15 159);
+  --warning: oklch(0.82 0.16 83);
+  --shadow-color: oklch(0.055 0.025 274);
+}
+
+* { border-color: var(--border); }
+html { scroll-behavior: smooth; }
+body { margin: 0; min-width: 320px; background: var(--background); color: var(--foreground); font-family: var(--font-sans); }
+button, a, input, select { letter-spacing: 0; }
+::selection { background: color-mix(in oklab, var(--primary) 35%, transparent); }
+
+@utility grid-fade {
+  background-image: linear-gradient(color-mix(in oklab, var(--border) 34%, transparent) 1px, transparent 1px), linear-gradient(90deg, color-mix(in oklab, var(--border) 34%, transparent) 1px, transparent 1px);
+  background-size: 42px 42px;
+}
+
+@utility aurora {
+  background-image: radial-gradient(circle at 20% 10%, color-mix(in oklab, var(--primary) 14%, transparent), transparent 34%), radial-gradient(circle at 85% 35%, color-mix(in oklab, var(--highlight) 13%, transparent), transparent 30%);
+}
+
+@keyframes float { 0%,100% { transform: translateY(0) } 50% { transform: translateY(-8px) } }
+.float { animation: float 5s ease-in-out infinite; }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; } }
